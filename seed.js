@@ -51,8 +51,8 @@ const seed = async () => {
     await project_3.addRobot(finn)
     await fiona.addProject(project_1)
     await jake.addProject(project_2)
-    await project_2.addRobot(fiona)
     await project_2.addRobot(finn)
+    await project_2.addRobot(fiona)
 
 
   } catch (err) {

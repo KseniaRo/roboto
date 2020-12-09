@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchRobot } from '../redux/singleRobot'
+import { Link } from 'react-router-dom'
 
 class SingleRobot extends React.Component {
   componentDidMount() {
@@ -22,7 +23,7 @@ class SingleRobot extends React.Component {
         <img src={this.props.robot.imageUrl} />
         <p />
         <h3>Projects:</h3>
-        {projects.length ? projects.map((project) => (<p key={project.id}>{project.title}</p>)) : <p> {this.props.robot.name} doesn't have any projects in progress.</p>}
+        {projects.length ? projects.map((project) => (<p key={project.id}><Link to={`/projects/${project.id}`}>{project.title}</Link></p>)) : <p> {this.props.robot.name} doesn't have any projects in progress.</p>}
       </div>
     )
   }
