@@ -59,7 +59,7 @@ describe('Tier One: Robots', () => {
 
     // This test is interested in the unconnected AllRobots component. It is
     // exported as a named export in app/components/AllRobots.js
-    xit('renders the robots passed in as props', () => {
+    it('renders the robots passed in as props', () => {
       const wrapper = mount(
         <UnconnectedAllRobots robots={robots} getRobots={getRobotsSpy} />
       );

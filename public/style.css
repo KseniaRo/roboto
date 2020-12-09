@@ -31,3 +31,9 @@ main {
   flex-direction: column;
   justify-content: center;
 }
+a{
+  color: white;
+ margin: 5px;
+ padding: 5px
+
+}
