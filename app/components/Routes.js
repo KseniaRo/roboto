@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import AllRobots from './AllRobots'
 import AllProjects from './AllProjects'
+import SingleRobot from './SingleRobot'
 
 const Routes = () => {
   return (
@@ -22,6 +23,7 @@ const Routes = () => {
           </h1>
           <div><Route exact path="/projects" component={AllProjects} />
             <Route exact path="/robots" component={AllRobots} />
+            <Route path="/robots/:robotId" component={SingleRobot} />
           </div>
 
         </main>
