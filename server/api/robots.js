@@ -22,13 +22,37 @@ router.get('/:robotId', async (req, res, next) => {
         model: Project
       }
     })
-
-
     res.json(robot)
   }
   catch (error) {
     next(error)
   }
 })
+
+router.post('/', async (req, res, next) => {
+  try {
+    const robot = await Robot.create(req.body)
+    res.json(robot)
+  } catch (err) {
+    next(err)
+  }
+})
+
+// router.put('/:todoId', (req, res, next) => {
+//   Todo.findByPk(req.params.todoId)
+//     .then(todo => todo.update(req.body))
+//     .then(todo => res.json(todo))
+//     .catch(next)
+// })
+
+// router.delete('/:todoId', (req, res, next) => {
+//   Todo.destroy({
+//     where: {
+//       id: req.params.todoId
+//     }
+//   })
+//     .then(() => res.status(204).end())
+//     .catch(next)
+// })
 
 module.exports = router
