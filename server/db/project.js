@@ -29,4 +29,11 @@ const Project = db.define('project', {
 
 })
 
+Project.beforeCreate((project) => {
+  if (project.title === '') {
+    throw console.error('Should have a title!');
+  }
+
+})
+
 module.exports = Project

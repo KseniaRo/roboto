@@ -29,4 +29,31 @@ router.get('/:projectId', async (req, res, next) => {
   }
 })
 
+router.post('/', async (req, res, next) => {
+  try {
+    const project = await Project.create(req.body)
+    res.json(project)
+  } catch (err) {
+    next(err)
+  }
+})
+
+// router.put('/:todoId', (req, res, next) => {
+//   Todo.findByPk(req.params.todoId)
+//     .then(todo => todo.update(req.body))
+//     .then(todo => res.json(todo))
+//     .catch(next)
+// })
+
+// router.delete('/:todoId', (req, res, next) => {
+//   Todo.destroy({
+//     where: {
+//       id: req.params.todoId
+//     }
+//   })
+//     .then(() => res.status(204).end())
+//     .catch(next)
+// })
+
+
 module.exports = router

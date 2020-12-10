@@ -17,8 +17,8 @@ class SingleRobot extends React.Component {
       <div >
         <div >
           <h1>{this.props.robot.name}</h1>
-          <p>ENERGY:{this.props.robot.fuelType}</p>
-          <p>BATTERY:{this.props.robot.fuelLevel}</p>
+          <p>Energy:{this.props.robot.fuelType}</p>
+          <p>Fuel Level:{this.props.robot.fuelLevel}</p>
         </div>
         <img src={this.props.robot.imageUrl} />
         <p />

@@ -3,20 +3,26 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { fetchRobots } from '../redux/robots'
 
+const defaultState = {
+  name: '',
+  fuelLevel: 100,
+  energy: '',
+  error: null
+}
 
 class CreateRobot extends React.Component {
   constructor() {
     super()
-    this.state = {
-      name: '',
-      battery: 0,
-      energy: ''
-    }
+    this.state = defaultState
+
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
+  componentDidUpdate() {
+    this.props.loadRobots()
+  }
   handleChange(event) {
-    console.log('this is event.target.value', event.target.value)
+    // console.log('this is event.target.value', event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -24,21 +30,13 @@ class CreateRobot extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     const makeRobot = async () => {
-      const res = await axios.post('/api/robots/', { name: this.state.name, battery: this.state.baterry })
+      const res = await axios.post('/api/robots/', { name: this.state.name, fuelLevel: this.state.baterry })
       console.log('this is res', res)
       console.log('this is state', this.state)
-
-
-      this.setState(
-        {
-          name: '',
-          battery: 1,
-          energy: ''
-        }
-      )
+      this.setState(defaultState)
     }
+    //WHY IS THE SET-STATE HAS TO BE BEFORE CALLINF A FUNCTION? IT DOESNT MAKE SENSE?
     makeRobot()
-    this.props.loadRobots()
 
 
   }
@@ -46,13 +44,15 @@ class CreateRobot extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div><label htmlFor="taskName">Robot Name:</label>
+        <div>
+          <ul>
+            <li>Name is requiared</li>
+          </ul>
+          <label htmlFor="taskName">Robot Name:</label>
           <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
         </div>
-        <div> <label htmlFor="battery">Battery Charge:</label>
-          <input type="number" min="1" max="10" name="battery" value={this.state.battery} onChange={this.handleChange} />
-        </div>
         <div>
+          <label htmlFor="energy">Fuel type:</label>
           <select name="energy" value={this.state.energy} onChange={this.handleChange}>
             <option value="electric" >ELECTRIC</option>
             <option value="gas">GAS</option>

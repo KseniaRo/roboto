@@ -30,20 +30,19 @@ const seed = async () => {
     const finn = await Robot.create({
       name: 'Finn-01',
       fuelType: 'diesel',
-      fuelLevel: 5,
       imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE30tv_PH6GYSCmF6Fa7OKKwoHX_8x0vd3YA&usqp=CAU'
     })
 
     const fiona = await Robot.create({
       name: 'Fiona-01',
-      fuelLevel: 8,
+      fuelLevel: 80,
       imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdo2DOeg1p-oAgnkzNQqrtzBLW6FAl_QYE1Q&usqp=CAU'
     })
 
     const jake = await Robot.create({
       name: 'Jake-01',
       fuelType: 'gas',
-      fuelLevel: 3,
+      fuelLevel: 30,
 
       imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjuxqogCvwXdTL0wmvb2pJ-ARRrTuZzXa4ZA&usqp=CAU'
     })
