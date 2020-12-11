@@ -3,32 +3,34 @@ import { connect } from 'react-redux';
 import { fetchProjects } from '../redux/projects'
 import { Link } from 'react-router-dom'
 import CreateProject from './CreateProject'
+import axios from 'axios'
 
 // Notice that we're exporting the AllProjects component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
 export class AllProjects extends React.Component {
-  constructor() {
-    super()
-
-  }
   componentDidMount() {
     this.props.loadProjects()
   }
-  // addToState(){
-  //   this.set
-  // }
+  async handleRemove(projectId) {
+    await axios.delete(`api/projects/${projectId}`)
+    this.props.loadProjects()
+  }
+
   render() {
     return (
       <div >
         {
           this.props.projects.map(project => (
-            <Link to={`/projects/${project.id}`} key={project.id}>
-              <h3>{project.title}</h3>
-              <p>
-                {project.deadline}
-              </p>
-            </Link>
+            <div key={project.id}>
+              <Link to={`/projects/${project.id}`} >
+                <h3>{project.title}</h3>
+                <p>
+                  {project.deadline}
+                </p>
+              </Link>
+              <button onClick={() => this.handleRemove(project.id)} type="button" > X {project.title}</button>
+            </div>
           ))
         }
         <h2>Create New Project:</h2>

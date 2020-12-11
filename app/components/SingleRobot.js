@@ -24,6 +24,7 @@ class SingleRobot extends React.Component {
         <p />
         <h3>Projects:</h3>
         {projects.length ? projects.map((project) => (<p key={project.id}><Link to={`/projects/${project.id}`}>{project.title}</Link></p>)) : <p> {this.props.robot.name} doesn't have any projects in progress.</p>}
+        <Link to="/robots"><button type="button" >back to all robots</button></Link>
       </div>
     )
   }

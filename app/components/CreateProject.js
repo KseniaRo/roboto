@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import { fetchProjects } from '../redux/projects'
 
 const defaultState = {
-  taskName: '',
-  assignee: '',
-  errorMessage: ''
+  title: '',
+  description: '',
+  deadline: ''
 }
 
 class CreateProject extends React.Component {
@@ -45,7 +45,7 @@ class CreateProject extends React.Component {
           <ul>
             <li>Title is requiared</li>
           </ul>
-          <label htmlFor="taskNAme">Project Title:</label>
+          <label htmlFor="title">Project Title:</label>
           <input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
         </div>
         <div>

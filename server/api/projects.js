@@ -38,20 +38,23 @@ router.post('/', async (req, res, next) => {
   }
 })
 
+router.delete('/:projectId', async (req, res, next) => {
+  try {
+    await Project.destroy({
+      where: {
+        id: req.params.projectId
+      }
+    })
+    res.status(204).end()
+  } catch (err) {
+    next(err)
+  }
+})
+
 // router.put('/:todoId', (req, res, next) => {
 //   Todo.findByPk(req.params.todoId)
 //     .then(todo => todo.update(req.body))
 //     .then(todo => res.json(todo))
-//     .catch(next)
-// })
-
-// router.delete('/:todoId', (req, res, next) => {
-//   Todo.destroy({
-//     where: {
-//       id: req.params.todoId
-//     }
-//   })
-//     .then(() => res.status(204).end())
 //     .catch(next)
 // })
 

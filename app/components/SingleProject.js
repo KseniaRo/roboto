@@ -21,7 +21,7 @@ class SingleProject extends React.Component {
         </div>
         <h3>Assign Robots:</h3>
         <ul>{robots.length ? robots.map((robot) => (<p key={robot.id}><Link to={`/robots/${robot.id}`} >{robot.name}</Link></p>)) : <p> {this.props.project.title} doesn't have any assigned robots.</p>}</ul>
-
+        <Link to="/projects"><button type="button" >back to all projects</button></Link>
       </div>
     )
   }
