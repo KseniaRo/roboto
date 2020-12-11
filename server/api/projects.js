@@ -28,7 +28,7 @@ router.get('/:projectId', async (req, res, next) => {
     next(error)
   }
 })
-
+// POST /api/projects/:projectId
 router.post('/', async (req, res, next) => {
   try {
     const project = await Project.create(req.body)
@@ -37,7 +37,7 @@ router.post('/', async (req, res, next) => {
     next(err)
   }
 })
-
+// DELETE /api/projects/:projectId
 router.delete('/:projectId', async (req, res, next) => {
   try {
     await Project.destroy({
@@ -50,13 +50,17 @@ router.delete('/:projectId', async (req, res, next) => {
     next(err)
   }
 })
-
-// router.put('/:todoId', (req, res, next) => {
-//   Todo.findByPk(req.params.todoId)
-//     .then(todo => todo.update(req.body))
-//     .then(todo => res.json(todo))
-//     .catch(next)
-// })
-
+// PUT /api/projects/:projectId
+router.put('/:projectId', async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.projectId)
+    console.log(req.body)
+    project.update(req.body)
+    res.json(project)
+  }
+  catch (err) {
+    next(err)
+  }
+})
 
 module.exports = router

@@ -33,7 +33,9 @@ export class AllRobots extends React.Component {
     this.props.loadRobots()
   }
 
+
   render() {
+
     return (
       <div >
         <h3> List of all robots:</h3>
@@ -57,6 +59,11 @@ export class AllRobots extends React.Component {
       </div>
     )
   }
+  //   addRobot(robot) {
+  //     this.setState({
+  //       robots: [robot]
+  //     })
+  //   }
 }
 
 const mapState = (state) => {

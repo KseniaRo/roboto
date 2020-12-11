@@ -16,9 +16,9 @@ class CreateProject extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-  componentDidUpdate() {
-    this.props.loadProjects()
-  }
+  // componentDidUpdate() {
+  //   this.props.loadProjects()
+  // }
   handleChange(event) {
     console.log('this is event.target.value in createProject', event.target.value)
     this.setState({
@@ -33,6 +33,7 @@ class CreateProject extends React.Component {
       console.log('this is res', res)
       console.log('this is state', this.state)
       this.setState(defaultState)
+      this.props.loadProjects()
     }
     makeProject()
 

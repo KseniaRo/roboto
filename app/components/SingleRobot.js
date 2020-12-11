@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchRobot } from '../redux/singleRobot'
 import { Link } from 'react-router-dom'
+import UpdateRobot from './UpdateRobot'
 
 class SingleRobot extends React.Component {
   componentDidMount() {
@@ -25,6 +26,7 @@ class SingleRobot extends React.Component {
         <h3>Projects:</h3>
         {projects.length ? projects.map((project) => (<p key={project.id}><Link to={`/projects/${project.id}`}>{project.title}</Link></p>)) : <p> {this.props.robot.name} doesn't have any projects in progress.</p>}
         <Link to="/robots"><button type="button" >back to all robots</button></Link>
+        <UpdateRobot robotId={this.props.match.params.robotId} />
       </div>
     )
   }

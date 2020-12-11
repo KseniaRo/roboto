@@ -28,7 +28,7 @@ router.get('/:robotId', async (req, res, next) => {
     next(error)
   }
 })
-
+// POST /api/robots/:robotId
 router.post('/', async (req, res, next) => {
   try {
     const robot = await Robot.create(req.body)
@@ -37,7 +37,7 @@ router.post('/', async (req, res, next) => {
     next(err)
   }
 })
-
+// DELETE /api/robots/:robotId
 router.delete('/:robotId', async (req, res, next) => {
   try {
     await Robot.destroy({
@@ -50,13 +50,17 @@ router.delete('/:robotId', async (req, res, next) => {
     next(err)
   }
 })
-
-
-// router.put('/:robotId', (req, res, next) => {
-//   robot.findByPk(req.params.robotId)
-//     .then(robot => robot.update(req.body))
-//     .then(robot => res.json(robot))
-//     .catch(next)
-// })
+// PUT /api/robots/:robotId
+router.put('/:robotId', async (req, res, next) => {
+  try {
+    const robot = await Robot.findByPk(req.params.robotId)
+    console.log(req.body)
+    robot.update(req.body)
+    res.json(robot)
+  }
+  catch (err) {
+    next(err)
+  }
+})
 
 module.exports = router

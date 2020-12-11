@@ -5,9 +5,7 @@ import { fetchRobots } from '../redux/robots'
 
 const defaultState = {
   name: '',
-  fuelLevel: 100,
   energy: '',
-  error: null
 }
 
 class CreateRobot extends React.Component {
@@ -18,11 +16,12 @@ class CreateRobot extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-  componentDidUpdate() {
-    this.props.loadRobots()
-  }
+  // componentDidUpdate() {
+  //   this.props.loadRobot()
+  // }
+
   handleChange(event) {
-    // console.log('this is event.target.value', event.target.value)
+    console.log('this is event.target.value', event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -34,9 +33,12 @@ class CreateRobot extends React.Component {
       console.log('this is res', res)
       console.log('this is state', this.state)
       this.setState(defaultState)
+      this.props.loadRobot()
     }
-    //WHY IS THE SET-STATE HAS TO BE BEFORE CALLINF A FUNCTION? IT DOESNT MAKE SENSE?
+
     makeRobot()
+    // this.props.loadRobot()
+    // this.render()
 
 
   }
@@ -48,7 +50,7 @@ class CreateRobot extends React.Component {
           <ul>
             <li>Name is requiared</li>
           </ul>
-          <label htmlFor="taskName">Robot Name:</label>
+          <label htmlFor="name">Robot Name:</label>
           <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
         </div>
         <div>
@@ -66,8 +68,7 @@ class CreateRobot extends React.Component {
 }
 const mapDispatch = (dispatch) => {
   return {
-    loadRobots: () => dispatch(fetchRobots())
-
+    loadRobot: () => dispatch(fetchRobots())
   };
 };
 export default connect(null, mapDispatch)(CreateRobot)
