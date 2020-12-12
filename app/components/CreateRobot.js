@@ -37,8 +37,6 @@ class CreateRobot extends React.Component {
     }
 
     makeRobot()
-    // this.props.loadRobot()
-    // this.render()
 
 
   }

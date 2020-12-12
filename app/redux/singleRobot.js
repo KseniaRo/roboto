@@ -3,7 +3,7 @@ import axios from 'axios'
 //ACTION TYPES
 
 const GET_ROBOT = 'GET_ROBOT'
-const UPDATE_ROBOT = 'UPDATE_ROBOT'
+
 
 //ACTION CREATORS
 export const getRobot = (robot) => {
@@ -12,12 +12,12 @@ export const getRobot = (robot) => {
     robot
   }
 }
-export const updateRobot = (robotId) => {
-  return {
-    type: UPDATE_ROBOT,
-    robotId
-  }
-}
+// export const unassignProject = (robotId) => {
+//   return {
+//     type: UPDATE_ROBOT,
+//     robotId
+//   }
+// }
 //THUNKS
 
 export const fetchRobot = (robotId) => {
@@ -36,8 +36,8 @@ export const fetchRobot = (robotId) => {
 //   return async (dispatch, getState) => {
 //     try {
 //       // console.log('this is GETSTATE',getState())
-//       const { data } = await axios.put(`/api/robots/${robotId}`)
-//       dispatch(updateRobot(data))
+//       const { data } = await axios.put(`/api/robots/${robotId}`, { name: this.state.name, fuelLevel: this.state.fuelLevel })
+//       dispatch(updateRobot(data.id))
 //     } catch (err) {
 //       console.log(err)
 //     }
@@ -53,7 +53,7 @@ export default (state = initialState, action) => {
       // console.log('this is get_robot in redux singlerobot', action.robot)
       return action.robot
     // case UPDATE_ROBOT:
-    //   return //?????
+    //   return action.robotId
     default:
       return state
   }

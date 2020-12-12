@@ -63,4 +63,19 @@ router.put('/:projectId', async (req, res, next) => {
   }
 })
 
+router.put('/:projectId/unassign', async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.projectId)
+    const robot = await Robot.findByPk(req.body.robotId)
+    // console.log('this is robot', robot)
+    // console.log('this is project', project)
+    // console.log(req.body)
+    await project.removeRobot(robot)
+    res.status(204)
+  }
+  catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router
