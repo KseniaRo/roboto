@@ -21,10 +21,12 @@ export const getRobot = (robot) => {
 //THUNKS
 
 export const fetchRobot = (robotId) => {
+  // console.log('this is robot.id', robotId)
   return async (dispatch, getState) => {
     try {
-      // console.log('this is GETSTATE',getState())
+      // console.log('this is GETSTATE', getState())
       const { data } = await axios.get(`/api/robots/${robotId}`)
+      // console.log('this is data', data)
       dispatch(getRobot(data))
     } catch (err) {
       console.log(err)

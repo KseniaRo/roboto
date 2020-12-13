@@ -28,6 +28,7 @@ class UpdateRobot extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault()
+    alert('Robot was updated!')
     const updateRobot = async (robotId) => {
       const res = await axios.put(`/api/robots/${robotId}`, { name: this.state.name, fuelLevel: this.state.fuelLevel })
       console.log('this is respond in updateRobot', res)

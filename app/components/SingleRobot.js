@@ -7,14 +7,20 @@ import axios from 'axios'
 
 class SingleRobot extends React.Component {
 
+
   componentDidMount() {
     this.props.loadRobot(this.props.match.params.robotId)
   }
 
   async unassignProject(robotId, projectId) {
-    const { data } = await axios.put(`/api/robots/${robotId}/unassign`, { projectId: projectId })
 
-    // this.props.loadRobot(this.props.match.params.robotId)
+    await axios.put(`/api/robots/${robotId}/unassign`, { projectId: projectId })
+    this.props.loadRobot(robotId)
+
+    // console.log('robotId', robotId)
+    // console.log('this.props....', this.props.match.params.robotId)
+
+    // this.render()
 
   }
 

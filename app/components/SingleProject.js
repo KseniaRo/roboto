@@ -13,7 +13,7 @@ class SingleProject extends React.Component {
   async unassignRobot(projectId, robotId) {
     const { data } = await axios.put(`/api/projects/${projectId}/unassign`, { robotId: robotId })
 
-    // this.props.loadProject(this.props.match.params.projectId)
+    this.props.loadProject(projectId)
   }
   render() {
     const projectId = this.props.match.params.projectId

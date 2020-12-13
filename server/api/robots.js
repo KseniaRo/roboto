@@ -71,7 +71,7 @@ router.put('/:robotId/unassign', async (req, res, next) => {
     // console.log('this is project', project)
     // console.log(req.body)
     await robot.removeProject(project)
-    res.status(204)
+    res.send(robot)
   }
   catch (err) {
     next(err)
