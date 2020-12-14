@@ -16,22 +16,16 @@ class CreateProject extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-  // componentDidUpdate() {
-  //   this.props.loadProjects()
-  // }
+
   handleChange(event) {
-    console.log('this is event.target.value in createProject', event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
   }
   handleSubmit(event) {
     event.preventDefault()
-    // console.log('this is this.props. in cerateProjects', this.props)
     const makeProject = async () => {
       const res = await axios.post('/api/projects/', { title: this.state.title, description: this.state.description, deadline: this.state.deadline })
-      console.log('this is res', res)
-      console.log('this is state', this.state)
       this.setState(defaultState)
       this.props.loadProjects()
     }
@@ -57,7 +51,7 @@ class CreateProject extends React.Component {
           <label htmlFor="description">Project Description:<span className="warning">Describe your project here</span></label>
           <input type="text" name="description" value={this.state.description} onChange={this.handleChange} />
         </div>
-        <button type="submit">Submit</button>
+        <button className="back" type="submit">Submit</button>
       </form>
     )
   }

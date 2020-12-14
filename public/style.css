@@ -17,23 +17,82 @@ body {
 }
 
 nav {
+  display: flex;
   align-items: center;
-  background-color: #333333;
+  background-color: #ffd100;
   color: #c0c0c0;
   display: flex;
   height: 80px;
   padding: 10px;
+  font-style: inherit;
 }
-
+.nav-main {
+  display: flex;
+  padding:5 px;
+  justify-content: space-between;
+  width: 80rem;
+  color: #333533 ;
+  align-items: center;
+}
+.nav-menu {
+  justify-content: space-evenly;
+}
+.welcome {
+  width: auto;
+  text-align: center;
+}
 main {
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
+  background-image: url('https://img.freepik.com/free-photo/starry-night-sky_1048-11828.jpg?size=626&ext=jpg');
+  color: yellow;
+  align-items: center;
 }
-a{
-  color: white;
+.a{
+  color: #333533;
  margin: 5px;
- padding: 5px
+ padding: 5px;
+ font-weight: bold ;
 
+}
+
+a{
+  color: #d6d6d6;
+}
+
+.route{
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 50rem;
+  margin-bottom: 2rem;
+}
+
+.form{
+
+  padding: 5px;
+  color: rgb(255, 251, 0)
+}
+
+.mainPage {
+  height: 80rem;
+}
+
+.del{
+  background-color: rgb(189, 21, 21);
+  color:whitesmoke;
+  border-radius: 10px;
+}
+.back{
+
+  background-color: #3da5d9;
+  border-radius: 5px;
+}
+.unassign{
+  background-color: #d6d6d6;
+  border-radius: 5px;
 }

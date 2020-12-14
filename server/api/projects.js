@@ -67,9 +67,6 @@ router.put('/:projectId/unassign', async (req, res, next) => {
   try {
     const project = await Project.findByPk(req.params.projectId)
     const robot = await Robot.findByPk(req.body.robotId)
-    // console.log('this is robot', robot)
-    // console.log('this is project', project)
-    // console.log(req.body)
     await project.removeRobot(robot)
     res.send(project)
   }
@@ -81,7 +78,6 @@ router.put('/:projectId/unassign', async (req, res, next) => {
 router.put('/:projectId/completed', async (req, res, next) => {
   try {
     const project = await Project.findByPk(req.params.projectId)
-    console.log(req.body)
     project.update(req.body)
     res.json(project)
   }

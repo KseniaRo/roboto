@@ -10,26 +10,13 @@ import axios from 'axios'
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
 
 export class AllRobots extends React.Component {
-  // constructor() {
-  //   super()
-  //   this.state = {
-  //     robots: []
-  //   }
-  // }
+
   componentDidMount() {
     this.props.loadRobots()
   }
 
   async handleRemove(robotId) {
-    // console.log('this is this.props.robots', this.props.robots)
     const res = await axios.delete(`api/robots/${robotId}`)
-    // console.log('this is respond from server ', res)
-    // this.setState({
-    //   robots: this.props.robots.filter((robot) => {
-    //     if (robot.id !== robotId) return robot
-    //   })
-    // })
-    // console.log(this.state)
     this.props.loadRobots()
   }
 
@@ -37,33 +24,36 @@ export class AllRobots extends React.Component {
   render() {
 
     return (
-      <div >
-        <h3> List of all robots:</h3>
-        {
-          this.props.robots.map(robot => (
-            <div key={robot.id}>
-              <Link to={`/robots/${robot.id}`} >
-                <h3> {robot.name}</h3>
-                <p>
-                  <img src={robot.imageUrl} />
-                </p>
-              </Link>
-              <button onClick={() => this.handleRemove(robot.id)} type="button" >X {robot.name}</button>
-            </div>
+      <div>
+        <h3 className="welcome"> List of all robots:</h3>
+        <div className="route" >
+          <div>
+            {
+              this.props.robots.map(robot => (
+                <div key={robot.id}>
+                  <Link to={`/robots/${robot.id}`} >
+                    <h3> {robot.name}</h3>
+                    <p>
+                      <img src={robot.imageUrl} />
+                    </p>
+                  </Link>
+                  <button className="del" onClick={() => this.handleRemove(robot.id)} type="button" >X {robot.name}</button>
+                </div>
 
-          ))
-        }
-        <h2>Create New Robot:</h2>
-        <div><CreateRobot /></div>
-        <h2>End of Form</h2>
+
+              ))
+            }
+          </div>
+
+          <div >
+            <h2>Create New Robot:</h2>
+            <div><CreateRobot /></div>
+          </div>
+
+        </div>
       </div>
     )
   }
-  //   addRobot(robot) {
-  //     this.setState({
-  //       robots: [robot]
-  //     })
-  //   }
 }
 
 const mapState = (state) => {

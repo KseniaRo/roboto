@@ -54,7 +54,6 @@ router.delete('/:robotId', async (req, res, next) => {
 router.put('/:robotId', async (req, res, next) => {
   try {
     const robot = await Robot.findByPk(req.params.robotId)
-    console.log(req.body)
     robot.update(req.body)
     res.json(robot)
   }
@@ -67,9 +66,6 @@ router.put('/:robotId/unassign', async (req, res, next) => {
   try {
     const robot = await Robot.findByPk(req.params.robotId)
     const project = await Project.findByPk(req.body.projectId)
-    // console.log('this is robot', robot)
-    // console.log('this is project', project)
-    // console.log(req.body)
     await robot.removeProject(project)
     res.send(robot)
   }

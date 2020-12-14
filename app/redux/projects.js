@@ -16,7 +16,6 @@ export const setProjects = (project) => {
 export const fetchProjects = () => {
   return async (dispatch, getState) => {
     try {
-      // console.log('this is GETSTATE',getState())
       const { data } = await axios.get('/api/projects')
       dispatch(setProjects(data))
     } catch (err) {

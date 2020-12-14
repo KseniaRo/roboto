@@ -17,19 +17,11 @@ class SingleRobot extends React.Component {
     await axios.put(`/api/robots/${robotId}/unassign`, { projectId: projectId })
     this.props.loadRobot(robotId)
 
-    // console.log('robotId', robotId)
-    // console.log('this.props....', this.props.match.params.robotId)
-
-    // this.render()
-
   }
 
   render() {
     const robotId = this.props.match.params.robotId
-    // console.log('this is this.props.robot in component SingleRobot', this.props.robot.name)
     const projects = this.props.robot.projects || []
-    // console.log(this.props.robot.projects)
-    // console.log(projects)
     return (
       <div >
         <div >
@@ -40,9 +32,9 @@ class SingleRobot extends React.Component {
         <img src={this.props.robot.imageUrl} />
         <p />
         <h3>Projects:</h3>
-        {projects.length ? projects.map((project) => (<p key={project.id}><Link to={`/projects/${project.id}`}>{project.title}</Link> <button onClick={() => this.unassignProject(robotId, project.id)} type="button"> Unassign</button></p>)) : <p> {this.props.robot.name} doesn't have any projects in progress.</p>}
+        {projects.length ? projects.map((project) => (<p key={project.id}><Link to={`/projects/${project.id}`}>{project.title}</Link> <button className="unassign" onClick={() => this.unassignProject(robotId, project.id)} type="button"> Unassign</button></p>)) : <p> {this.props.robot.name} doesn't have any projects in progress.</p>}
 
-        <Link to="/robots"><button type="button" >back to all robots</button></Link>
+        <Link to="/robots"><button className="back" type="button" >back to all robots</button></Link>
         <UpdateRobot robotId={this.props.match.params.robotId} />
       </div>
     )
@@ -50,7 +42,6 @@ class SingleRobot extends React.Component {
 
 }
 const mapStateToProps = (state) => {
-  // console.log('mapStatetoprops, state ', state)
   return {
     robot: state.robot
 

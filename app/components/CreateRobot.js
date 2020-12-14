@@ -16,12 +16,9 @@ class CreateRobot extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-  // componentDidUpdate() {
-  //   this.props.loadRobot()
-  // }
+
 
   handleChange(event) {
-    console.log('this is event.target.value', event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -30,20 +27,15 @@ class CreateRobot extends React.Component {
     event.preventDefault()
     const makeRobot = async () => {
       const res = await axios.post('/api/robots/', { name: this.state.name, fuelLevel: this.state.baterry })
-      console.log('this is res', res)
-      console.log('this is state', this.state)
       this.setState(defaultState)
       this.props.loadRobot()
     }
-
     makeRobot()
-
-
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit}>
         <div>
           <ul>
             <li>Name is requiared</li>
@@ -59,7 +51,7 @@ class CreateRobot extends React.Component {
             <option value="diesel">DIESEL</option>
           </select>
         </div>
-        <button type="submit">Submit</button>
+        <button className="back" type="submit">Submit</button>
       </form>
     )
   }

@@ -18,7 +18,6 @@ class UpdateProject extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
   handleChange(event) {
-    // console.log('this is event.target.value', event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -27,8 +26,6 @@ class UpdateProject extends React.Component {
     event.preventDefault()
     const updateProject = async (projectId) => {
       const res = await axios.put(`/api/projects/${projectId}`, { title: this.state.title, completed: this.state.completed, priority: this.state.priority })
-      // console.log('this is respond in updateRobot', res)
-      // console.log('this is state in updateRobot', this.state)
       this.setState(defaultState)
       this.props.loadUpdateProject(this.props.projectId)
     }
@@ -61,7 +58,7 @@ class UpdateProject extends React.Component {
 
           </select>
         </div>
-        <button type="submit">Submit</button>
+        <button className="back" type="submit">Submit</button>
       </form>
     )
   }

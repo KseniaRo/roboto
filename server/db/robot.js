@@ -36,27 +36,5 @@ Robot.beforeCreate((robot) => {
 })
 
 
-// User.beforeUpdate(async (user)=>{
-//   // console.log('this is user.mentorIs',user.mentorId)
-//   // const usersMentor =await User.findbyPK(user.mentorId)
-//   const usersMentor =await user.getMentor()
-//   if (usersMentor){
-//     if(usersMentor.isStudent){
-//       throw new Error('Mentors must be teachers')
-//     }
-//     if(user.isTeacher){
-//       throw new Error('Mentees must be students')
-//     }
-//   }
-//   const usersMentees =await user.getMentees()
-//   if(usersMentees.length>0)
-// {
-//   if(user.isStudent){
-//     throw new Error('Mentors must be teachers')
-//   }
-// }
-
-// })
-
 module.exports = Robot
 

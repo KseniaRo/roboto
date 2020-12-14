@@ -30,13 +30,13 @@ export class AllProjects extends React.Component {
                   {project.deadline}
                 </p>
               </Link>
-              <button onClick={() => this.handleRemove(project.id)} type="button" > X {project.title}</button>
+              <button className="del" onClick={() => this.handleRemove(project.id)} type="button" > X {project.title}</button>
             </div>
           ))
         }
         <h2>Create New Project:</h2>
         <div><CreateProject /></div>
-        <h2>End of Form</h2>
+
       </div>)
   }
 }

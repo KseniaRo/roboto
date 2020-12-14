@@ -17,22 +17,15 @@ class UpdateRobot extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-  // componentDidUpdate() {
-  //   this.props.loadUpdateRobot(this.props.robotId)
-  // }
   handleChange(event) {
-    // console.log('this is event.target.value', event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
   }
   handleSubmit(event) {
     event.preventDefault()
-    alert('Robot was updated!')
     const updateRobot = async (robotId) => {
       const res = await axios.put(`/api/robots/${robotId}`, { name: this.state.name, fuelLevel: this.state.fuelLevel })
-      console.log('this is respond in updateRobot', res)
-      console.log('this is state in updateRobot', this.state)
       this.setState(defaultState)
       this.props.loadUpdateRobot(this.props.robotId)
     }
@@ -57,7 +50,7 @@ class UpdateRobot extends React.Component {
           <label htmlFor="fuelLevel">Fuel robot here:</label>
           <input type="number" name="fuelLevel" min="0" max="100" value={this.state.fuelLevel} onChange={this.handleChange} />
         </div>
-        <button type="submit">Submit</button>
+        <button className="back" type="submit">Submit</button>
       </form>
     )
   }
