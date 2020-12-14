@@ -78,4 +78,15 @@ router.put('/:projectId/unassign', async (req, res, next) => {
   }
 })
 
+router.put('/:projectId/completed', async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.projectId)
+    console.log(req.body)
+    project.update(req.body)
+    res.json(project)
+  }
+  catch (err) {
+    next(err)
+  }
+})
 module.exports = router
