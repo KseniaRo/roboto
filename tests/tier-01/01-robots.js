@@ -16,7 +16,7 @@ const mockStore = configureMockStore(middlewares);
 const initialState = {
   robots: [],
 };
-
+//test comment
 import mockAxios from '../mock-axios';
 import { setRobots, fetchRobots } from '../../app/redux/robots';
 
